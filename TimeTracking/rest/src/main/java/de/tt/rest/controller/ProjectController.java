@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import de.tt.persistence.entity.EmployeeEntity;
 import de.tt.persistence.entity.ProjectEntity;
 import de.tt.service.impl.ProjectService;
 import de.tt.persistence.exception.NotificationException;
@@ -45,7 +46,6 @@ public class ProjectController {
         return this.projectService.findAll();
     }
 
-
     @Operation(summary = "Get project with id")
     @GetMapping(value = "/{id}")
     public ProjectEntity findById(@PathVariable("id") Long id) {
@@ -68,6 +68,18 @@ public class ProjectController {
     @DeleteMapping(value = "/{id}")
     public void delete(@PathVariable("id") Long id) throws NotificationException {
         projectService.delete(id);
+    }
+
+    @Operation(summary = "Get all employee without timetrack")
+    @GetMapping(value = "/find-without-timetrack")
+    public List<EmployeeEntity> findAllWithoutTimetrack() {
+        return projectService.findAllWithoutTimetrack();
+    }
+
+    @Operation(summary = "Get all employee without other timetrack")
+    @GetMapping(value = "/find-without-other-timetrack/{id}")
+    public List<EmployeeEntity> findAllWithoutOtherTimetrack(@PathVariable("id") Long id) {
+        return projectService.findAllWithoutOtherTimetrack(id);
     }
 
     @ExceptionHandler(value = { EntityNotFoundException.class })

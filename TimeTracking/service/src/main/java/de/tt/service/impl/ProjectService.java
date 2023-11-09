@@ -1,9 +1,12 @@
 package de.tt.service.impl;
+
+import de.tt.persistence.entity.EmployeeEntity;
 import de.tt.persistence.entity.ProjectEntity;
 import de.tt.persistence.repository.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Set;
 import de.tt.persistence.entity.TimeTrackEntity;
 import de.tt.persistence.repository.TimeTrackRepository;
@@ -26,7 +29,6 @@ public class ProjectService implements ServiceInterface<ProjectEntity, ProjectRe
     public ProjectRepository getRepository() {
         return projectRepository;
     }
-
 
     @Override
     public ProjectEntity saveOrUpdate(ProjectEntity entity) {
@@ -55,4 +57,13 @@ public class ProjectService implements ServiceInterface<ProjectEntity, ProjectRe
         }
         return this.getRepository().getById(entity.getId());
     }
+
+    public List<EmployeeEntity> findAllWithoutTimetrack() {
+        return projectRepository.findAllWithoutTimetrack();
+    }
+
+    public List<EmployeeEntity> findAllWithoutOtherTimetrack(Long id) {
+        return projectRepository.findAllWithoutOtherTimetrack(id);
+    }
+
 }

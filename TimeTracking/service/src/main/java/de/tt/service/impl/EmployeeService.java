@@ -1,4 +1,5 @@
 package de.tt.service.impl;
+
 import java.util.List;
 import de.tt.persistence.entity.EmployeeEntity;
 import de.tt.persistence.repository.EmployeeRepository;
@@ -34,6 +35,14 @@ public class EmployeeService implements ServiceInterface<EmployeeEntity, Employe
 
     public List<EmployeeEntity> findAllWithoutOtherDepartment(Long id) {
         return employeeRepository.findAllWithoutOtherDepartment(id);
+    }
+
+    public List<EmployeeEntity> findAllWithoutTimetrack() {
+        return employeeRepository.findAllWithoutTimetrack();
+    }
+
+    public List<EmployeeEntity> findAllWithoutOtherTimetrack(Long id) {
+        return employeeRepository.findAllWithoutOtherTimetrack(id);
     }
 
     @Override
