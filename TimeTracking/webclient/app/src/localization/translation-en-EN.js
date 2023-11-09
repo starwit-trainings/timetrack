@@ -36,7 +36,7 @@ const translationEnEN = {
     "timeTrack.endDate": "endDate",
     "timeTrack.endDate.hint": "",
     "timeTrack.project": "project",
-    "timeTrack.myTimetrack": "myTimetrack",
+    "timeTrack.myTimetrack": "employee",
     "app.baseName": "TimeTracking",
     "home.title": "Welcome",
     "home.welcome": "Welcome to TimeTracking",

@@ -58,11 +58,11 @@ public class ProjectService implements ServiceInterface<ProjectEntity, ProjectRe
         return this.getRepository().getById(entity.getId());
     }
 
-    public List<EmployeeEntity> findAllWithoutTimetrack() {
+    public List<ProjectEntity> findAllWithoutTimetrack() {
         return projectRepository.findAllWithoutTimetrack();
     }
 
-    public List<EmployeeEntity> findAllWithoutOtherTimetrack(Long id) {
+    public List<ProjectEntity> findAllWithoutOtherTimetrack(Long id) {
         return projectRepository.findAllWithoutOtherTimetrack(id);
     }
 

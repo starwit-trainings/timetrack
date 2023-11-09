@@ -72,13 +72,13 @@ public class ProjectController {
 
     @Operation(summary = "Get all employee without timetrack")
     @GetMapping(value = "/find-without-timetrack")
-    public List<EmployeeEntity> findAllWithoutTimetrack() {
+    public List<ProjectEntity> findAllWithoutTimetrack() {
         return projectService.findAllWithoutTimetrack();
     }
 
     @Operation(summary = "Get all employee without other timetrack")
     @GetMapping(value = "/find-without-other-timetrack/{id}")
-    public List<EmployeeEntity> findAllWithoutOtherTimetrack(@PathVariable("id") Long id) {
+    public List<ProjectEntity> findAllWithoutOtherTimetrack(@PathVariable("id") Long id) {
         return projectService.findAllWithoutOtherTimetrack(id);
     }
 
