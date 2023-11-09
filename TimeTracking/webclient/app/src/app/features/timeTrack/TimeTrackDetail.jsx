@@ -25,8 +25,8 @@ function TimeTrackDetail() {
     function reloadSelectLists() {
         const selectLists = [];
         const functions = [
-            projectRest.findAllWithoutTimeTrack(id),
-            employeeRest.findAllWithoutEmployeeTimeTrack(id)
+            projectRest.findAll(),
+            employeeRest.findAll()
         ];
         Promise.all(functions).then(values => {
             selectLists.push({name: "project", data: values[0].data});
