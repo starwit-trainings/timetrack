@@ -13,13 +13,5 @@ class EmployeeRest extends CrudRest {
             return axios.get(this.baseUrl + "/find-without-other-department/" + selected);
         }
     }
-
-    findAllWithoutEmployeeTimeTrack(selected) {
-        if (isNaN(selected)) {
-            return axios.get(this.baseUrl + "/find-without-employeeTimeTrack");
-        } else {
-            return axios.get(this.baseUrl + "/find-without-other-employeeTimeTrack/" + selected);
-        }
-    }
 }
 export default EmployeeRest;

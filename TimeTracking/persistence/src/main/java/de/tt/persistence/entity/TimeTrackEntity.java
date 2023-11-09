@@ -3,12 +3,12 @@ package de.tt.persistence.entity;
 import com.fasterxml.jackson.annotation.JsonFilter;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import java.util.Date;
-import java.util.Set;
 
 import java.time.ZonedDateTime;
 import de.tt.persistence.serializer.ZonedDateTimeSerializer;
@@ -39,12 +39,14 @@ public class TimeTrackEntity extends AbstractEntity<Long> {
 
     // entity relations
     @JsonFilter("filterId")
-    @OneToMany(mappedBy = "timeTrack")
-    private Set<ProjectEntity> project;
+    @ManyToOne
+    @JoinColumn(name = "project_id")
+    private ProjectEntity project;
 
     @JsonFilter("filterId")
-    @OneToMany(mappedBy = "employeeTimeTrack")
-    private Set<EmployeeEntity> myTimetrack;
+    @ManyToOne
+    @JoinColumn(name = "employee_id")
+    private EmployeeEntity myTimetrack;
 
     // entity fields getters and setters
     public ZonedDateTime getStartDate() {
@@ -64,19 +66,19 @@ public class TimeTrackEntity extends AbstractEntity<Long> {
     }
 
     // entity relations getters and setters
-    public Set<ProjectEntity> getProject() {
+    public ProjectEntity getProject() {
         return project;
     }
 
-    public void setProject(Set<ProjectEntity> project) {
+    public void setProject(ProjectEntity project) {
         this.project = project;
     }
 
-    public Set<EmployeeEntity> getMyTimetrack() {
+    public EmployeeEntity getMyTimetrack() {
         return myTimetrack;
     }
 
-    public void setMyTimetrack(Set<EmployeeEntity> myTimetrack) {
+    public void setMyTimetrack(EmployeeEntity myTimetrack) {
         this.myTimetrack = myTimetrack;
     }
 

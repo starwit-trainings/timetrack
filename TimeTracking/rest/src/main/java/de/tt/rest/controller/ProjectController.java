@@ -45,17 +45,6 @@ public class ProjectController {
         return this.projectService.findAll();
     }
 
-    @Operation(summary = "Get all project without timeTrack")
-    @GetMapping(value = "/find-without-timeTrack")
-    public List<ProjectEntity> findAllWithoutTimeTrack() {
-        return projectService.findAllWithoutTimeTrack();
-    }
-
-    @Operation(summary = "Get all project without other timeTrack")
-    @GetMapping(value = "/find-without-other-timeTrack/{id}")
-    public List<ProjectEntity> findAllWithoutOtherTimeTrack(@PathVariable("id") Long id) {
-        return projectService.findAllWithoutOtherTimeTrack(id);
-    }
 
     @Operation(summary = "Get project with id")
     @GetMapping(value = "/{id}")

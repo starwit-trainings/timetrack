@@ -45,6 +45,28 @@ public class TimeTrackController {
         return this.timetrackService.findAll();
     }
 
+    @Operation(summary = "Get all timetrack without project")
+    @GetMapping(value = "/find-without-project")
+    public List<TimeTrackEntity> findAllWithoutProject() {
+        return timetrackService.findAllWithoutProject();
+    }
+
+    @Operation(summary = "Get all timetrack without other project")
+    @GetMapping(value = "/find-without-other-project/{id}")
+    public List<TimeTrackEntity> findAllWithoutOtherProject(@PathVariable("id") Long id) {
+        return timetrackService.findAllWithoutOtherProject(id);
+    }
+    @Operation(summary = "Get all timetrack without myTimetrack")
+    @GetMapping(value = "/find-without-myTimetrack")
+    public List<TimeTrackEntity> findAllWithoutMyTimetrack() {
+        return timetrackService.findAllWithoutMyTimetrack();
+    }
+
+    @Operation(summary = "Get all timetrack without other myTimetrack")
+    @GetMapping(value = "/find-without-other-myTimetrack/{id}")
+    public List<TimeTrackEntity> findAllWithoutOtherMyTimetrack(@PathVariable("id") Long id) {
+        return timetrackService.findAllWithoutOtherMyTimetrack(id);
+    }
 
     @Operation(summary = "Get timetrack with id")
     @GetMapping(value = "/{id}")

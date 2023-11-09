@@ -17,9 +17,4 @@ public interface EmployeeRepository extends JpaRepository<EmployeeEntity, Long> 
 
     @Query("SELECT e FROM EmployeeEntity e WHERE NOT EXISTS (SELECT r FROM e.department r WHERE r.id <> ?1)")
     public List<EmployeeEntity> findAllWithoutOtherDepartment(Long id);
-    @Query("SELECT e FROM EmployeeEntity e WHERE NOT EXISTS (SELECT r FROM e.employeeTimeTrack r)")
-    public List<EmployeeEntity> findAllWithoutEmployeeTimeTrack();
-
-    @Query("SELECT e FROM EmployeeEntity e WHERE NOT EXISTS (SELECT r FROM e.employeeTimeTrack r WHERE r.id <> ?1)")
-    public List<EmployeeEntity> findAllWithoutOtherEmployeeTimeTrack(Long id);
 }

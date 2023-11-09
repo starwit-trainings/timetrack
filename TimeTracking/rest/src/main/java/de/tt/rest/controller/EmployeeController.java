@@ -56,17 +56,6 @@ public class EmployeeController {
     public List<EmployeeEntity> findAllWithoutOtherDepartment(@PathVariable("id") Long id) {
         return employeeService.findAllWithoutOtherDepartment(id);
     }
-    @Operation(summary = "Get all employee without employeeTimeTrack")
-    @GetMapping(value = "/find-without-employeeTimeTrack")
-    public List<EmployeeEntity> findAllWithoutEmployeeTimeTrack() {
-        return employeeService.findAllWithoutEmployeeTimeTrack();
-    }
-
-    @Operation(summary = "Get all employee without other employeeTimeTrack")
-    @GetMapping(value = "/find-without-other-employeeTimeTrack/{id}")
-    public List<EmployeeEntity> findAllWithoutOtherEmployeeTimeTrack(@PathVariable("id") Long id) {
-        return employeeService.findAllWithoutOtherEmployeeTimeTrack(id);
-    }
 
     @Operation(summary = "Get employee with id")
     @GetMapping(value = "/{id}")

@@ -19,7 +19,7 @@ const entityFields = [
     },
     {
         name: "project",
-        type: "OneToMany",
+        type: "ManyToOne",
         regex: null,
         selectList: [],
         display: [
@@ -29,7 +29,7 @@ const entityFields = [
     },
     {
         name: "myTimetrack",
-        type: "OneToMany",
+        type: "ManyToOne",
         regex: null,
         selectList: [],
         display: [

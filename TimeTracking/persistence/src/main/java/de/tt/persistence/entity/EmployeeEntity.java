@@ -5,7 +5,9 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import java.util.Set;
 
 import java.time.ZonedDateTime;
 import de.tt.persistence.serializer.ZonedDateTimeSerializer;
@@ -41,9 +43,8 @@ public class EmployeeEntity extends AbstractEntity<Long> {
     private DepartmentEntity department;
 
     @JsonFilter("filterId")
-    @ManyToOne
-    @JoinColumn(name = "timetrack_id")
-    private TimeTrackEntity employeeTimeTrack;
+    @OneToMany(mappedBy = "myTimetrack")
+    private Set<TimeTrackEntity> employeeTimeTrack;
 
     // entity fields getters and setters
     public String getName() {
@@ -79,11 +80,11 @@ public class EmployeeEntity extends AbstractEntity<Long> {
         this.department = department;
     }
 
-    public TimeTrackEntity getEmployeeTimeTrack() {
+    public Set<TimeTrackEntity> getEmployeeTimeTrack() {
         return employeeTimeTrack;
     }
 
-    public void setEmployeeTimeTrack(TimeTrackEntity employeeTimeTrack) {
+    public void setEmployeeTimeTrack(Set<TimeTrackEntity> employeeTimeTrack) {
         this.employeeTimeTrack = employeeTimeTrack;
     }
 
